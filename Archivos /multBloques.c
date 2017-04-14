@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <malloc.h>
+// #include <malloc.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -45,7 +45,7 @@ if (argc < 4){
  B= (double *)malloc(sizeMatrix*sizeof(double)); //aloca memoria para B
  C= (double *)malloc(sizeMatrix*sizeof(double)); //aloca memoria para C
 
- crearMatriz(A, sizeMatrix);			//Inicializa A 
+ crearMatriz(A, sizeMatrix);			//Inicializa A
  crearIdentidad(B,sizeBlock,sizeMatrix,N,r); //Inicializa B como matriz identidad
 
   timetick = dwalltime();
@@ -69,7 +69,7 @@ if (argc < 4){
     printf("\n\n  C: \n" );
     imprimeMatriz(C,N,r);
 
- } 
+ }
 
 
  printf(" \n\n Realizando comprobacion ... \n" );
@@ -97,7 +97,7 @@ void producto(double *A,double *B,double *C, int r,int N,int sizeMatrix, int siz
 
  for (i=0; i<sizeMatrix ;i++)
 	  C[i]=0.0;
- 
+
 	for (I=0;I<N;I++){
 		for (J=0;J<N;J++){
 			despC = (I*N+J)*sizeBlock;
@@ -108,13 +108,13 @@ void producto(double *A,double *B,double *C, int r,int N,int sizeMatrix, int siz
 					for (j=0;j<r;j++){
 						desp = despC + i*r+j;
 						for (k=0;k<r;k++){
-							C[desp] += A[despA + i*r+k]*B[despB + k*r+j]; 
+							C[desp] += A[despA + i*r+k]*B[despB + k*r+j];
 						};
 					}
 				};
 			};
-		};	
-	}; 
+		};
+	};
 }
 
 
@@ -149,7 +149,7 @@ void imprimeVector(double *S, int sizeMatrix){
   printf("\n ");
   for(i=0 ;i<sizeMatrix;i++)
 	printf(" %f " ,S[i]);
- 
+
   printf("\n\n ");
 }
 
@@ -167,7 +167,7 @@ void imprimeMatriz(double *S,int N,int r){
 		   despB=(I*N+J)*r*r;
 	  for (j=0;j<r;j++){
 	     printf("%f ",S[despB+ i*r+j]);
-	
+
 	   };//end for j
 	};//end for J
         printf("\n ");
@@ -191,4 +191,3 @@ double dwalltime()
 	sec = tv.tv_sec + tv.tv_usec/1000000.0;
 	return sec;
 }
-
