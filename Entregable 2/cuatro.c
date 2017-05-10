@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <pthread.h>
+#include <omp.h>
 
 double dwalltime();
 void imprimeVector(uint64_t *V, uint64_t size);
@@ -29,6 +29,7 @@ int main(int argc,char*argv[]){
   X = atoi(argv[3]);
   T = atoi(argv[4]);
   I = atoi(argv[5]);
+  omp_set_num_threads(T);
 
   if (N < T) {
     printf("Cantidad de elementos no puede ser menor a la cantidad de threads");
